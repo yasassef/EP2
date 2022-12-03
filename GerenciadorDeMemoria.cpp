@@ -18,7 +18,7 @@ GerenciadorDeMemoria::~GerenciadorDeMemoria(){
 void GerenciadorDeMemoria::load(string arquivo, MemoriaRAM* m){
     ifstream input;
 
-    input.open("teste1.txt");
+    input.open(arquivo);
     if(input.fail()){
         throw new runtime_error("Não encontrado");
     }
@@ -113,7 +113,7 @@ void GerenciadorDeMemoria::load(string arquivo, MemoriaRAM* m){
 void GerenciadorDeMemoria::dump(string arquivo, MemoriaRAM* m){
     ofstream output;
     
-    output.open("teste2.txt");
+    output.open(arquivo);
     if(output.fail()){
         throw new runtime_error("Erro");
     }

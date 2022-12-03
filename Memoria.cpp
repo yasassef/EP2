@@ -5,12 +5,9 @@
 using namespace std;
 
 Memoria :: Memoria(){
-
 }
 
-
 Memoria :: ~Memoria(){
-
 }
 
 

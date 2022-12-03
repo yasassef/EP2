@@ -116,12 +116,12 @@ void registrador(UnidadeDeControle* u) {
 }
 
 void alteraRegistrador(UnidadeDeControle* u) {
-    int posicao, newValor;
+    int p, novoValor;
     cout << "Registrador a ser alterado: ";
-    cin >> posicao;
+    cin >> p;
     cout << "Novo valor: ";
-    cin >> newValor;
-    u->getBancoDeRegistradores()->setValor(posicao, newValor);
+    cin >> novoValor;
+    u->getBancoDeRegistradores()->setValor(p, novoValor);
     cout << endl;
     registrador(u);
 }
@@ -153,13 +153,13 @@ void memoria(UnidadeDeControle* u) {
 }
 
 void alteraMemoria(UnidadeDeControle* u) {
-    int memo, novoValor;
+    int p, novoValor;
     cout << "Posicao a ser alterada: ";
-    cin >> memo;
+    cin >> p;
     cout << "Novo valor: ";
     cin >> novoValor;
     Dado* d = new Dado(novoValor);
-    u->getMemoria()->escrever(memo, d);
+    u->getMemoria()->escrever(p, d);
     cout << endl;
     memoria(u);
 }
@@ -171,13 +171,13 @@ void imprimeM(UnidadeDeControle* u) {
 }
 
 void load(UnidadeDeControle* u) {
-    string arquivoOrigem;
+    string origem;
     cout << "Arquivo origem: ";
-    cin >> arquivoOrigem;
+    cin >> origem;
     ESMapeadaNaMemoria* m = dynamic_cast<ESMapeadaNaMemoria*>(u->getMemoria());
     GerenciadorDeMemoria* g = new GerenciadorDeMemoria();
     try {
-        g->load(arquivoOrigem, m->getMemoriaSubjacente());
+        g->load(origem, m->getMemoriaSubjacente());
     } catch (exception* e) {
         cout << e->what();
         delete e;
@@ -188,13 +188,13 @@ void load(UnidadeDeControle* u) {
 }
 
 void dump(UnidadeDeControle* u) {
-    string arquivoDestino;
+    string destino;
     cout << "Arquivo destino: ";
-    cin >> arquivoDestino;
+    cin >> destino;
     ESMapeadaNaMemoria* m = dynamic_cast<ESMapeadaNaMemoria*>(u->getMemoria());
     GerenciadorDeMemoria* g = new GerenciadorDeMemoria();
     try {
-        g->dump(arquivoDestino, m->getMemoriaSubjacente());
+        g->dump(destino, m->getMemoriaSubjacente());
     } catch (exception* e) {
         cout << e->what();
         delete e;
@@ -209,14 +209,14 @@ void ep() {
     BancoDeRegistradores* R = new BancoDeRegistradores();
     MemoriaRAM* RAM = new MemoriaRAM(64);
     ESMapeadaNaMemoria* ES = new ESMapeadaNaMemoria(RAM);
-    Teclado* teclado = new Teclado();
-    TecladoDeChar* tecladoChar = new TecladoDeChar();
-    Monitor* monitor = new Monitor();
-    MonitorDeChar* monitorChar = new MonitorDeChar();
-    ES->adicionar(teclado);
-    ES->adicionar(tecladoChar);
-    ES->adicionar(monitor);
-    ES->adicionar(monitorChar);
+    Teclado* tec = new Teclado();
+    TecladoDeChar* tecChar = new TecladoDeChar();
+    Monitor* mon = new Monitor();
+    MonitorDeChar* monChar = new MonitorDeChar();
+    ES->adicionar(tec);
+    ES->adicionar(tecChar);
+    ES->adicionar(mon);
+    ES->adicionar(monChar);
     UnidadeDeControle* U = new UnidadeDeControle(R, ES);
     emulador(U);
 }
