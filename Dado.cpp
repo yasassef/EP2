@@ -1,5 +1,3 @@
-
-
 #include "Dado.h"
 #include <iostream>
 

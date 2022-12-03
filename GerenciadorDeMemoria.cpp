@@ -18,7 +18,7 @@ GerenciadorDeMemoria::~GerenciadorDeMemoria(){
 void GerenciadorDeMemoria::load(string arquivo, MemoriaRAM* m){
     ifstream input;
 
-    input.open(arquivo);
+    input.open("teste1.txt");
     if(input.fail()){
         throw new runtime_error("Não encontrado");
     }
@@ -113,7 +113,7 @@ void GerenciadorDeMemoria::load(string arquivo, MemoriaRAM* m){
 void GerenciadorDeMemoria::dump(string arquivo, MemoriaRAM* m){
     ofstream output;
     
-    output.open(arquivo);
+    output.open("teste2.txt");
     if(output.fail()){
         throw new runtime_error("Erro");
     }
@@ -138,47 +138,47 @@ void GerenciadorDeMemoria::dump(string arquivo, MemoriaRAM* m){
         if(instrucao != NULL){
             if(instrucao -> getOpcode() == 0){
                 if(instrucao -> getFuncao() == 32){
-                    output << "ADD " << instrucao->getDestino() << " " << instrucao-> getOrigem1() << " " << instrucao->getOrigem2() << endl;
+                    output << "ADD" << " " << instrucao->getDestino() << " " << instrucao-> getOrigem1() << " " << instrucao->getOrigem2() << endl;
                 }
 
                 if(instrucao -> getFuncao() == 34){
-                    output << "SUB " << instrucao->getDestino() << " " << instrucao-> getOrigem1() << " " << instrucao->getOrigem2() << endl;
+                    output << "SUB" << " " << instrucao->getDestino() << " " << instrucao-> getOrigem1() << " " << instrucao->getOrigem2() << endl;
                 }
 
                 if(instrucao -> getFuncao() == 24){
-                    output << "MULT " << instrucao-> getOrigem1() << " " << instrucao->getOrigem2() << endl;
+                    output << "MULT" << " " << instrucao-> getOrigem1() << " " << instrucao->getOrigem2() << endl;
                 }
 
                 if(instrucao -> getFuncao() == 26){
-                    output << "DIV " << instrucao-> getOrigem1() << " " << instrucao->getOrigem2() << endl;
+                    output << "DIV" << " " << instrucao-> getOrigem1() << " " << instrucao->getOrigem2() << endl;
                 }
             }
 
             if(instrucao->getOpcode() == 2){
-                output << "J " << instrucao->getImediato() << endl;
+                output << "J" << " " << instrucao->getImediato() << endl;
             }
 
             if(instrucao->getOpcode() == 5){
-                output << "BNE " << instrucao -> getOrigem1() << " " << instrucao -> getOrigem2() << " " << instrucao -> getImediato() << endl;
+                output << "BNE" << " " << instrucao -> getOrigem1() << " " << instrucao -> getOrigem2() << " " << instrucao -> getImediato() << endl;
             }
 
             if(instrucao->getOpcode() == 4){
-                output << "BEQ " << instrucao -> getOrigem1() << " " << instrucao -> getOrigem2() << " " << instrucao -> getImediato() << endl;
+                output << "BEQ" << " " << instrucao -> getOrigem1() << " " << instrucao -> getOrigem2() << " " << instrucao -> getImediato() << endl;
             }
 
             if(instrucao->getOpcode() == 35){
-                output << "LW " << instrucao->getDestino() << " " << instrucao -> getImediato() << endl;
+                output << "LW" << " " << instrucao->getDestino() << " " << instrucao -> getImediato() << endl;
             }
 
             if(instrucao->getOpcode() == 43){
-                output << "SW " << instrucao->getDestino() << " " << instrucao -> getImediato() << endl;
+                output << "SW" << " " << instrucao->getDestino() << " " << instrucao -> getImediato() << endl;
             }
         }
         else if (m->ler(posicao) == NULL){
             output << "-" << endl;
         }
         else {
-            output << "D " << m->ler(posicao)->getValor() << endl;
+            output << "D" << " " << m->ler(posicao)->getValor() << endl;
         }
         if(output.fail()){
             throw new runtime_error("Erro");
