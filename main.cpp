@@ -205,7 +205,7 @@ void dump(UnidadeDeControle* u) {
 }
 
 
-void ep() {
+void ep2() {
     BancoDeRegistradores* R = new BancoDeRegistradores();
     MemoriaRAM* RAM = new MemoriaRAM(64);
     ESMapeadaNaMemoria* ES = new ESMapeadaNaMemoria(RAM);
@@ -222,6 +222,6 @@ void ep() {
 }
 
 int main() {
-    ep();
+    ep2();
     return 0;
 }
